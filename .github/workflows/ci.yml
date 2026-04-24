@@ -21,13 +21,13 @@ jobs:
                 distribution: 'temurin'
 
             - name: Run Checkstyle
-              run: mvn checkstyle:checkstyle
+              run: mvn clean checkstyle:checkstyle
 
             - name: Run PMD
-              run: mvn pmd:check
+              run: mvn clean pmd:check
 
             - name: Run SpotBugs
-              run: mvn spotbugs:check
+              run: mvn clean spotbugs:check
         
     build_and_test:
         runs-on: windows-latest
