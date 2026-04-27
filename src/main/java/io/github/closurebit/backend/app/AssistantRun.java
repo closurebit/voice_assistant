@@ -4,6 +4,7 @@ import io.github.closurebit.backend.audio.AudioFormatFactory;
 import io.github.closurebit.backend.audio.JavaSoundAudioCapture;
 import io.github.closurebit.backend.pipeline.RecognitionPipeline;
 import io.github.closurebit.backend.stt.VoskSpeechRecognizer;
+import io.github.closurebit.backend.stt.WakeWordRecognizer;
 import io.github.closurebit.frontend.ConsoleTranscriptPrinter;
 
 public class AssistantRun {
@@ -11,9 +12,10 @@ public class AssistantRun {
         AppConfig config = AppConfig.defaultConfig();
 
         try (JavaSoundAudioCapture audioCapture = new JavaSoundAudioCapture(AudioFormatFactory.voskFormat());
-             VoskSpeechRecognizer recognizer = VoskSpeechRecognizer.create(config.getModelPath(), config.getSampleRate())) {
+             WakeWordRecognizer wakeWordRecognizer = WakeWordRecognizer.create(config.getModelPath(), config.getSampleRate(), config.getWakeWord());
+             VoskSpeechRecognizer commandRecognizer = VoskSpeechRecognizer.create(config.getModelPath(), config.getSampleRate())) {
             
-            RecognitionPipeline pipeline = new RecognitionPipeline(audioCapture, recognizer, new ConsoleTranscriptPrinter());
+            RecognitionPipeline pipeline = new RecognitionPipeline(audioCapture, wakeWordRecognizer, commandRecognizer, new ConsoleTranscriptPrinter());
 
             pipeline.run();
         }

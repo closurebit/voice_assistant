@@ -11,13 +11,19 @@
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
+
+        <vosk.version>0.3.45</vosk.version>
+        <maven-shade-plugin.version>3.5.3</maven-shade-plugin.version>
+        <maven-checkstyle-plugin.version>3.6.0</maven-checkstyle-plugin.version>
+        <maven-pmd-plugin.version>3.28.0</maven-pmd-plugin.version>
+        <spotbugs-maven-plugin.version>4.9.8.3</spotbugs-maven-plugin.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>com.alphacephei</groupId>
             <artifactId>vosk</artifactId>
-            <version>0.3.45</version>
+            <version>${vosk.version}</version>
         </dependency>
     </dependencies>
 
@@ -26,7 +32,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <version>3.5.3</version>
+                <version>${maven-shade-plugin.version}</version>
                 <executions>
                     <execution>
                         <phase>package</phase>
@@ -55,7 +61,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
-                <version>3.6.0</version>
+                <version>${maven-checkstyle-plugin.version}</version>
                 <configuration>
                     <configLocation>google_checks.xml</configLocation>
                     <violationSeverity>warning</violationSeverity>
@@ -75,7 +81,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-pmd-plugin</artifactId>
-                <version>3.28.0</version>
+                <version>${maven-pmd-plugin.version}</version>
                 <configuration>
                     <targetJdk>21</targetJdk>
                     <failOnViolation>true</failOnViolation>
@@ -95,7 +101,7 @@
             <plugin>
                 <groupId>com.github.spotbugs</groupId>
                 <artifactId>spotbugs-maven-plugin</artifactId>
-                <version>4.9.8.3</version>
+                <version>${spotbugs-maven-plugin.version}</version>
                 <configuration>
                     <effort>Max</effort>
                     <threshold>Low</threshold>

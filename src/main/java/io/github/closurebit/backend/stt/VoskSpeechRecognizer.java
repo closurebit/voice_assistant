@@ -48,9 +48,9 @@ public class VoskSpeechRecognizer implements SpeechRecognizer {
 
     public String extractText(String json) {
         int textIndex = json.indexOf("\"text\"");
-        if (textIndex < 0) {
+        if (textIndex < 0)
             return "";
-        }
+        
         int colon = json.indexOf(':', textIndex);
         int firstQuote = json.indexOf('"', colon + 1);
         int secondQuote = json.indexOf('"', firstQuote + 1);

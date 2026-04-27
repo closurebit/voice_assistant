@@ -11,4 +11,8 @@ public class ConsoleTranscriptPrinter {
         if (text != null && !text.isBlank())
             System.out.println("final: " + text);
     }
+
+    public void printWakeWordDetected() {
+        System.out.println("WAKE WORD DETECTED");
+    }
 }
